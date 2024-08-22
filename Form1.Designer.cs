@@ -48,6 +48,7 @@
             buttonQuadrado = new Button();
             buttonLimpa = new Button();
             textBoxResultado = new TextBox();
+            labelHistorico = new Label();
             SuspendLayout();
             // 
             // buttonZero
@@ -80,6 +81,7 @@
             buttonResultado.TabIndex = 2;
             buttonResultado.Text = "=";
             buttonResultado.UseVisualStyleBackColor = true;
+            buttonResultado.Click += buttonResultado_Click;
             // 
             // buttonUm
             // 
@@ -123,6 +125,7 @@
             buttonSoma.TabIndex = 6;
             buttonSoma.Text = "+";
             buttonSoma.UseVisualStyleBackColor = true;
+            buttonSoma.Click += buttonSoma_Click;
             // 
             // buttonQuatro
             // 
@@ -166,6 +169,7 @@
             buttonSubtrai.TabIndex = 10;
             buttonSubtrai.Text = "-";
             buttonSubtrai.UseVisualStyleBackColor = true;
+            buttonSubtrai.Click += buttonSubtrai_Click;
             // 
             // buttonSete
             // 
@@ -209,6 +213,7 @@
             buttonMultiplica.TabIndex = 14;
             buttonMultiplica.Text = "x";
             buttonMultiplica.UseVisualStyleBackColor = true;
+            buttonMultiplica.Click += buttonMultiplica_Click;
             // 
             // buttonDivide
             // 
@@ -219,6 +224,7 @@
             buttonDivide.TabIndex = 15;
             buttonDivide.Text = "/";
             buttonDivide.UseVisualStyleBackColor = true;
+            buttonDivide.Click += buttonDivide_Click;
             // 
             // buttonPercentual
             // 
@@ -249,6 +255,7 @@
             buttonLimpa.TabIndex = 19;
             buttonLimpa.Text = "C";
             buttonLimpa.UseVisualStyleBackColor = true;
+            buttonLimpa.Click += buttonLimpa_Click;
             // 
             // textBoxResultado
             // 
@@ -260,11 +267,23 @@
             textBoxResultado.Text = "0";
             textBoxResultado.TextAlign = HorizontalAlignment.Right;
             // 
+            // labelHistorico
+            // 
+            labelHistorico.AutoSize = true;
+            labelHistorico.Font = new Font("Segoe UI", 12F);
+            labelHistorico.ForeColor = Color.DarkCyan;
+            labelHistorico.Location = new Point(85, 105);
+            labelHistorico.Name = "labelHistorico";
+            labelHistorico.Size = new Size(19, 21);
+            labelHistorico.TabIndex = 21;
+            labelHistorico.Text = "0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 461);
+            Controls.Add(labelHistorico);
             Controls.Add(textBoxResultado);
             Controls.Add(buttonLimpa);
             Controls.Add(buttonQuadrado);
@@ -287,6 +306,7 @@
             Controls.Add(buttonZero);
             Name = "Form1";
             Text = "Calculadora";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -313,5 +333,6 @@
         private Button buttonQuadrado;
         private Button buttonLimpa;
         private TextBox textBoxResultado;
+        private Label labelHistorico;
     }
 }

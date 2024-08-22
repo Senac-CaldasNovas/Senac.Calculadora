@@ -2,6 +2,9 @@ namespace Senac.Calculadora
 {
     public partial class Form1 : Form
     {
+        decimal numero1, numero2;
+        string operacao = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -65,6 +68,123 @@ namespace Senac.Calculadora
         private void buttonZero_Click(object sender, EventArgs e)
         {
             InsereNumero(0);
+        }
+
+        public decimal Soma(decimal valor1, decimal valor2)
+        {
+            decimal resultado = valor1 + valor2;
+            return resultado;
+        }
+
+        public decimal Subtrai(decimal valor1, decimal valor2)
+        {
+            decimal resultado = valor1 - valor2;
+            return resultado;
+        }
+
+        public decimal Multiplica(decimal valor1, decimal valor2)
+        {
+            decimal resultado = valor1 * valor2;
+            return resultado;
+        }
+
+        public decimal Divide(decimal valor1, decimal valor2)
+        {
+            if (valor2 == 0)
+            {
+                MessageBox.Show("Não é possível dividir por zero");
+                return 0;
+            }
+
+            decimal resultado = valor1 / valor2;
+            return resultado;
+        }
+
+        public decimal EfetuaQuadrado(decimal valor)
+        {
+            decimal resultado = valor * valor;
+            return resultado;
+        }
+
+        public void GeraResultado()
+        {
+            decimal resultado = 0;
+            switch (operacao)
+            {
+                case "+":
+                    resultado = Soma(numero1, numero2);
+                    break;
+                case "-":
+                    resultado = Subtrai(numero1, numero2);
+                    break;
+                case "*":
+                    resultado = Multiplica(numero1, numero2);
+                    break;
+                case "/":
+                    resultado = Divide(numero1, numero2);
+                    break;
+            }
+
+            textBoxResultado.Text = resultado.ToString();
+
+            labelHistorico.Text += " " + numero2 + " = " + resultado;
+        }
+
+        public void GeraOperacao(string op)
+        {
+            if (operacao != "")
+            {
+                numero2 = Convert.ToDecimal(textBoxResultado.Text);
+                GeraResultado();
+            }
+
+            operacao = op;
+            numero1 = Convert.ToDecimal(textBoxResultado.Text);
+
+            textBoxResultado.Text = "0";
+
+            labelHistorico.Text = numero1 + " " + operacao;
+        }
+
+        private void buttonSoma_Click(object sender, EventArgs e)
+        {
+            GeraOperacao("+");
+        }
+
+        private void buttonSubtrai_Click(object sender, EventArgs e)
+        {
+            GeraOperacao("-");
+        }
+
+        private void buttonMultiplica_Click(object sender, EventArgs e)
+        {
+            GeraOperacao("*");
+        }
+
+        private void buttonDivide_Click(object sender, EventArgs e)
+        {
+            GeraOperacao("/");
+        }
+
+        private void buttonResultado_Click(object sender, EventArgs e)
+        {
+            numero2 = Convert.ToDecimal(textBoxResultado.Text);
+            GeraResultado();
+            operacao = "";
+        }
+
+        private void buttonLimpa_Click(object sender, EventArgs e)
+        {
+            numero1 = 0;
+            numero2 = 0;
+            textBoxResultado.Text = "0";
+            operacao = "";
+            labelHistorico.Text = "";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            labelHistorico.Text = "";
         }
     }
 }
