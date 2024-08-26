@@ -123,11 +123,22 @@ namespace Senac.Calculadora
                 case "/":
                     resultado = Divide(numero1, numero2);
                     break;
+                case "2":
+                    resultado = EfetuaQuadrado(numero1);
+                    break;
+                case "%":
+                    resultado = numero1 * (numero2 / 100);
+                    break;
             }
 
             textBoxResultado.Text = resultado.ToString();
 
             labelHistorico.Text += " " + numero2 + " = " + resultado;
+
+            if(operacao == "%")
+            {
+                labelHistorico.Text = numero2 + "% de " + numero1 + " = " + resultado;
+            }
         }
 
         public void GeraOperacao(string op)
@@ -185,6 +196,29 @@ namespace Senac.Calculadora
         private void Form1_Load(object sender, EventArgs e)
         {
             labelHistorico.Text = "";
+        }
+
+        private void buttonPonto_Click(object sender, EventArgs e)
+        {
+
+            if (!textBoxResultado.Text.Contains(","))
+            {
+                textBoxResultado.Text = textBoxResultado.Text + ",";
+            }
+        }
+
+        private void buttonQuadrado_Click(object sender, EventArgs e)
+        {
+            numero1 = Convert.ToDecimal(textBoxResultado.Text);
+            operacao = "2";
+            GeraResultado();
+
+            labelHistorico.Text = "Quadrado de " + numero1 + " = " + textBoxResultado.Text;
+        }
+
+        private void buttonPercentual_Click(object sender, EventArgs e)
+        {
+            GeraOperacao("%");
         }
     }
 }

@@ -71,6 +71,7 @@
             buttonPonto.TabIndex = 1;
             buttonPonto.Text = ",";
             buttonPonto.UseVisualStyleBackColor = true;
+            buttonPonto.Click += buttonPonto_Click;
             // 
             // buttonResultado
             // 
@@ -235,6 +236,7 @@
             buttonPercentual.TabIndex = 17;
             buttonPercentual.Text = "%";
             buttonPercentual.UseVisualStyleBackColor = true;
+            buttonPercentual.Click += buttonPercentual_Click;
             // 
             // buttonQuadrado
             // 
@@ -245,6 +247,7 @@
             buttonQuadrado.TabIndex = 18;
             buttonQuadrado.Text = "x²";
             buttonQuadrado.UseVisualStyleBackColor = true;
+            buttonQuadrado.Click += buttonQuadrado_Click;
             // 
             // buttonLimpa
             // 
